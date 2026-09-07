@@ -288,6 +288,7 @@ footer{padding:32px 0;border-top:1px solid var(--line);font-size:12px;color:var(
   <div class="wrap nav">
     <div class="brand"><div class="mark">K</div><span>KinetAios</span></div>
     <div class="nav-right">
+      <a class="cta" data-i18n="nav_enterprise" href="enterprise-capability.html" style="font-size:13px;padding:8px 14px;background:rgba(90,212,255,.08);color:var(--acc)">企业服务</a>
       <a class="cta" id="privacyLink" data-i18n="nav_privacy" href="privacy.html" style="font-size:13px;padding:8px 14px">隐私政策</a>
       <div class="lang">
         <button data-l="zh-Hans" class="on">简</button>
@@ -765,7 +766,7 @@ const I18N = {
     f_4t:"跨引擎 resume", f_4:"扫 Claude / Codex 历史 sessions,选一条续接,任务连贯。",
     f_5t:"跨引擎长期记忆", f_5:"每轮后台抽用户事实入库,切换引擎不丢记忆。FTS5 + 语义向量双重召回。",
     f_6t:"工作区", f_6:"终端、文件、对话三 tab 绑定 cwd,改完直接在 app 内验证。",
-    nav_privacy:"隐私政策", pr_full:"阅读完整隐私政策 →",
+    nav_privacy:"隐私政策", pr_full:"阅读完整隐私政策 →", nav_enterprise:"企业服务",
     pr_title:"隐私在你手里",
     pr_sub:"API key 走系统 Keychain,对话存本地 SQLite,不上传任何后台。跨平台 Electron,资源占用低。",
     fq_title:"常见问题",
@@ -829,7 +830,7 @@ const I18N = {
     f_4t:"跨引擎 resume", f_4:"掃 Claude / Codex 歷史 sessions,選一條續接,任務連貫。",
     f_5t:"跨引擎長期記憶", f_5:"每輪後台抽使用者事實入庫,切換引擎不丟記憶。FTS5 + 語意向量雙重召回。",
     f_6t:"工作區", f_6:"終端、檔案、對話三 tab 綁定 cwd,改完直接在 app 內驗證。",
-    nav_privacy:"隱私權政策", pr_full:"閱讀完整隱私權政策 →",
+    nav_privacy:"隱私權政策", pr_full:"閱讀完整隱私權政策 →", nav_enterprise:"企業服務",
     pr_title:"隱私在你手裡",
     pr_sub:"API key 走系統 Keychain,對話存本地 SQLite,不上傳任何後台。跨平台 Electron,資源佔用低。",
     fq_title:"常見問題",
@@ -893,7 +894,7 @@ const I18N = {
     f_4t:"Cross-engine resume", f_4:"Scan Claude / Codex history sessions, pick one to continue. Tasks stay coherent.",
     f_5t:"Cross-engine memory", f_5:"Background fact extraction each turn. Persists across engine switches. FTS5 + semantic dual recall.",
     f_6t:"Workspace", f_6:"Terminal, files, chat tabs bound to cwd. Edit and verify within the app.",
-    nav_privacy:"Privacy", pr_full:"Read the full Privacy Policy →",
+    nav_privacy:"Privacy", pr_full:"Read the full Privacy Policy →", nav_enterprise:"Enterprise",
     pr_title:"Privacy in your hands",
     pr_sub:"API keys in OS Keychain (DPAPI / Keychain), conversations in local SQLite, no backend upload. Cross-platform Electron, low footprint.",
     fq_title:"FAQ",
@@ -957,7 +958,7 @@ const I18N = {
     f_4t:"クロスエンジン resume", f_4:"Claude / Codex 履歴 sessions をスキャン、継続するものを選択。タスクは一貫。",
     f_5t:"クロスエンジン長期記憶", f_5:"毎ターン背景で事実抽出。エンジン切替でも記憶は消えない。FTS5 + 意味ベクトル双重召回。",
     f_6t:"ワークスペース", f_6:"ターミナル、ファイル、チャットの3 tab が cwd にバインド。編集後 app 内で検証。",
-    nav_privacy:"プライバシー", pr_full:"プライバシーポリシー全文を読む →",
+    nav_privacy:"プライバシー", pr_full:"プライバシーポリシー全文を読む →", nav_enterprise:"エンタープライズ",
     pr_title:"プライバシーはあなたの手に",
     pr_sub:"API key は OS Keychain (DPAPI / Keychain)、対話はローカル SQLite、バックエンド送信なし。クロスプラットフォーム Electron、低リソース。",
     fq_title:"よくある質問",
