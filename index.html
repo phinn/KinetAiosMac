@@ -259,6 +259,8 @@ footer{padding:32px 0;border-top:1px solid var(--line);font-size:12px;color:var(
 .pcard .glow{position:absolute;top:-40px;right:-40px;width:120px;height:120px;border-radius:50%;opacity:.08;filter:blur(40px);transition:opacity .2s}
 .pcard:hover .glow{opacity:.18}
 .pcard .pico{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px;position:relative;z-index:1}
+.pcard .pico img{width:44px;height:44px;border-radius:12px;display:block;background:var(--surface2)}
+.pcard .price{position:absolute;top:20px;right:20px;font-family:ui-monospace,SFMono-Regular,monospace;font-size:11px;color:var(--dim);background:var(--surface2);padding:3px 8px;border-radius:6px;z-index:1}
 .pcard h4{font-size:18px;font-weight:700;margin-bottom:4px;position:relative;z-index:1}
 .pcard .tag{font-family:ui-monospace,SFMono-Regular,monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:12px;position:relative;z-index:1}
 .pcard p{font-size:14px;color:var(--muted);margin-bottom:16px;flex:1;position:relative;z-index:1}
@@ -409,48 +411,7 @@ footer{padding:32px 0;border-top:1px solid var(--line);font-size:12px;color:var(
     <div class="h-eyebrow">00 / product suite</div>
     <h2 class="h-title" data-i18n="ps_title"></h2>
     <p class="h-sub" data-i18n="ps_sub"></p>
-    <div class="products">
-      <a class="pcard" href="https://phinn.github.io/kinet/index2.html" target="_blank" style="--cardGrad:linear-gradient(135deg,#00E5B5,#00B5E5)">
-        <div class="glow" style="background:var(--mint)"></div>
-        <div class="pico" style="background:rgba(0,229,181,.12);color:var(--mint)">💪</div>
-        <h4>KinetFit</h4>
-        <div class="tag" data-i18n="ps_fit_tag"></div>
-        <p data-i18n="ps_fit_desc"></p>
-        <span class="plink" style="color:var(--mint)"><span data-i18n="ps_learn"></span> →</span>
-      </a>
-      <a class="pcard" href="https://apps.apple.com/app/id6780600464" target="_blank" rel="noopener" style="--cardGrad:linear-gradient(135deg,#9B7EFF,#00B5E5)">
-        <div class="glow" style="background:var(--purple)"></div>
-        <div class="pico" style="background:rgba(155,126,255,.12);color:var(--purple)">🌙</div>
-        <h4>KinetSoul</h4>
-        <div class="tag" data-i18n="ps_agt_tag"></div>
-        <p data-i18n="ps_agt_desc"></p>
-        <span class="plink" style="color:var(--purple)"><span data-i18n="ps_learn"></span> →</span>
-      </a>
-      <a class="pcard" href="https://phinn.github.io/kinetbrief/" target="_blank" style="--cardGrad:linear-gradient(135deg,#FF9A5C,#FFD75F)">
-        <div class="glow" style="background:var(--orange)"></div>
-        <div class="pico" style="background:rgba(255,154,92,.12);color:var(--orange)">📋</div>
-        <h4>KinetBrief</h4>
-        <div class="tag" data-i18n="ps_brf_tag"></div>
-        <p data-i18n="ps_brf_desc"></p>
-        <span class="plink" style="color:var(--orange)"><span data-i18n="ps_learn"></span> →</span>
-      </a>
-      <a class="pcard" href="https://phinn.github.io/KinetElf/" target="_blank" style="--cardGrad:linear-gradient(135deg,#FF6B9B,#9B7EFF)">
-        <div class="glow" style="background:#FF6B9B"></div>
-        <div class="pico" style="background:rgba(255,107,155,.12);color:#FF6B9B">🧚</div>
-        <h4>KinetElf</h4>
-        <div class="tag" data-i18n="ps_elf_tag"></div>
-        <p data-i18n="ps_elf_desc"></p>
-        <span class="plink" style="color:#FF6B9B"><span data-i18n="ps_learn"></span> →</span>
-      </a>
-      <a class="pcard" href="https://phinn.github.io/KinetFlashFind/" target="_blank" style="--cardGrad:linear-gradient(135deg,#00B5E5,#FFD75F)">
-        <div class="glow" style="background:var(--cyan)"></div>
-        <div class="pico" style="background:rgba(0,181,229,.12);color:var(--cyan)">🔍</div>
-        <h4>KinetFlashFind</h4>
-        <div class="tag" data-i18n="ps_ff_tag"></div>
-        <p data-i18n="ps_ff_desc"></p>
-        <span class="plink" style="color:var(--cyan)"><span data-i18n="ps_learn"></span> →</span>
-      </a>
-    </div>
+    <div class="products" id="suiteGrid"><!-- JS 渲染 24 app 卡片(数据见 SUITE_APPS) --></div>
   </div>
 </section>
 
@@ -726,17 +687,7 @@ const I18N = {
     m_tool:"用户偏好:深色商务风、四语言",
     st_eng:"AI 引擎", st_tools:"内置工具", st_lang:"UI 语言", st_upload:"后端上传",
     ps_title:"KinetAios 产品系列",
-    ps_sub:"五款产品,覆盖 AI 工作台、健康管理、心灵陪伴、信息简报与效率工具,各有专长。",
-    ps_fit_tag:"健康 · 健身 · 运动追踪",
-    ps_fit_desc:"智能健康管理中心。追踪健身数据、制定训练计划、记录运动进度,帮你保持最佳状态。",
-    ps_agt_tag:"iOS · 心灵 · 冥想",
-    ps_agt_desc:"KinetSoul 是一款 iOS App,为内心提供宁静空间。冥想引导、情绪记录、心灵成长,陪你找到内在平衡。",
-    ps_brf_tag:"简报 · 摘要 · 信息聚合",
-    ps_brf_desc:"智能信息简报工具。自动聚合新闻、生成摘要、推送关键资讯,让你不漏重要信息。",
-    ps_elf_tag:"iOS · 桌宠 · 离线陪伴",
-    ps_elf_desc:"口袋精灵,会陪你聊天。零收集、可离线,有性格有心情,记得你说过的每一句话。",
-    ps_ff_tag:"macOS · 全盘搜索 · 秒出结果",
-    ps_ff_desc:"Mac 全盘文件即时搜索。自建索引不依赖 Spotlight,隐藏文件也能边打字边出结果。",
+    ps_sub:"23 款 App,一套 Kinet 家族:AI 工作台、效率、健康、生活与游戏,点卡片直达各产品页。",
     ps_learn:"了解产品",
     eng_title:"多 AI 引擎,各跑各的",
     eng_sub:"每个引擎一个独立 agent,各自循环、各自状态、各自产出。互不阻塞,你只管下达任务。",
@@ -790,17 +741,7 @@ const I18N = {
     m_tool:"使用者偏好:深色商務風、四語言",
     st_eng:"AI 引擎", st_tools:"內建工具", st_lang:"UI 語言", st_upload:"後端上傳",
     ps_title:"KinetAios 產品系列",
-    ps_sub:"五款產品,覆蓋 AI 工作台、健康管理、心靈陪伴、資訊簡報與效率工具,各有專長。",
-    ps_fit_tag:"健康 · 健身 · 運動追蹤",
-    ps_fit_desc:"智能健康管理中心。追蹤健身數據、制定訓練計畫、記錄運動進度,幫你保持最佳狀態。",
-    ps_agt_tag:"iOS · 心靈 · 冥想",
-    ps_agt_desc:"KinetSoul 是一款 iOS App,為內心提供寧靜空間。冥想引導、情緒記錄、心靈成長,陪你找到內在平衡。",
-    ps_brf_tag:"簡報 · 摘要 · 資訊聚合",
-    ps_brf_desc:"智能資訊簡報工具。自動聚合新聞、生成摘要、推送關鍵資訊,讓你不漏重要消息。",
-    ps_elf_tag:"iOS · 桌寵 · 離線陪伴",
-    ps_elf_desc:"口袋精靈,會陪你聊天。零收集、可離線,有性格有心情,記得你說過的每一句話。",
-    ps_ff_tag:"macOS · 全碟搜尋 · 秒出結果",
-    ps_ff_desc:"Mac 全碟檔案即時搜尋。自建索引不依賴 Spotlight,隱藏檔案也能邊打字邊出結果。",
+    ps_sub:"23 款 App,一套 Kinet 家族:AI 工作台、效率、健康、生活與遊戲,點卡片直達各產品頁。",
     ps_learn:"了解產品",
     eng_title:"多 AI 引擎,各跑各的",
     eng_sub:"每個引擎一個獨立 agent,各自循環、各自狀態、各自產出。互不阻塞,你只管下達任務。",
@@ -854,17 +795,7 @@ const I18N = {
     m_tool:"User preferences: dark business style, 4 languages",
     st_eng:"AI Engines", st_tools:"Built-in Tools", st_lang:"UI Languages", st_upload:"Backend Upload",
     ps_title:"KinetAios Product Suite",
-    ps_sub:"Five products covering an AI workbench, health, mindfulness, briefings, and productivity tools.",
-    ps_fit_tag:"Health · Fitness · Activity Tracking",
-    ps_fit_desc:"Smart health management hub. Track fitness data, build training plans, and log workout progress to stay at your peak.",
-    ps_agt_tag:"iOS · Mind · Meditation",
-    ps_agt_desc:"KinetSoul is an iOS app that creates a tranquil space for your inner world. Guided meditation, mood journaling, and soul growth — find your inner balance.",
-    ps_brf_tag:"Briefing · Summary · News Aggregation",
-    ps_brf_desc:"Intelligent information briefing tool. Auto-aggregates news, generates summaries, and surfaces what matters most.",
-    ps_elf_tag:"iOS · Pocket Pet · Offline Companion",
-    ps_elf_desc:"A pocket spirit that chats with you. Zero data collection, fully offline — a personality that remembers what you say.",
-    ps_ff_tag:"macOS · Full-Disk Search · Instant",
-    ps_ff_desc:"Instant full-disk file search for Mac. Self-built index beyond Spotlight — hidden files appear as you type.",
+    ps_sub:"23 apps, one Kinet family — AI workbench, productivity, health, life & games. Tap a card to visit each product.",
     ps_learn:"Learn more",
     eng_title:"Multiple AI engines, each on its own",
     eng_sub:"Each engine runs as an independent agent — own loop, own status, own output. No blocking. You just hand out tasks.",
@@ -918,17 +849,7 @@ const I18N = {
     m_tool:"ユーザー設定:ダークビジネス風、4言語",
     st_eng:"AI エンジン", st_tools:"内蔵ツール", st_lang:"UI 言語", st_upload:"バックエンド送信",
     ps_title:"KinetAios 製品ラインナップ",
-    ps_sub:"5つの製品、AIワークベンチ、健康管理、マインドフルネス、ブリーフィング、生産性ツールをカバー。",
-    ps_fit_tag:"健康 · フィットネス · 活動追跡",
-    ps_fit_desc:"スマート健康管理ハブ。フィットネスデータの追跡、トレーニング計画の作成、運動進度の記録でベストコンディションを維持。",
-    ps_agt_tag:"iOS · 心 · 瞑想",
-    ps_agt_desc:"KinetSoul は iOS アプリで、心に静寂の空間を提供します。瞑想ガイド、感情記録、魂の成長、内なるバランスを見つけよう。",
-    ps_brf_tag:"ブリーフィング · 要約 · 情報集約",
-    ps_brf_desc:"インテリジェント情報ブリーフィングツール。ニュース自動集約、要約生成、重要情報の通知。",
-    ps_elf_tag:"iOS · ポケットペット · オフライン",
-    ps_elf_desc:"あなたとおしゃべりするポケットスピリット。データ収集ゼロ、オフライン対応、あなたの言葉を覚える性格持ち。",
-    ps_ff_tag:"macOS · 全ディスク検索 · 即時",
-    ps_ff_desc:"Mac 全ディスクのインスタント検索。Spotlight に依存しない独自インデックスで、隠しファイルも入力しながら即表示。",
+    ps_sub:"23アプリ、Kinet ファミリー — AIワークベンチ、生産性、ヘルス、ライフ&ゲーム。カードをタップして各製品へ。",
     ps_learn:"製品詳細",
     eng_title:"マルチ AI エンジン、それぞれ独立",
     eng_sub:"各エンジンが独立 agent として稼動。独自ループ、独自ステータス、独自アウトプット。互いにブロックしない。タスクを渡すだけ。",
@@ -976,6 +897,8 @@ const I18N = {
 function applyLang(l){
   if(!I18N[l]) l = "zh-Hans";
   const dict = I18N[l];
+  document.documentElement.lang = l;
+  renderSuite();
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const k = el.getAttribute("data-i18n");
     if(dict[k] != null) el.textContent = dict[k];
@@ -984,7 +907,6 @@ function applyLang(l){
     const k = el.getAttribute("data-i18n-html");
     if(dict[k] != null) el.innerHTML = dict[k];
   });
-  document.documentElement.lang = l;
   document.querySelectorAll(".lang button").forEach(b => {
     b.classList.toggle("on", b.dataset.l === l);
   });
@@ -994,6 +916,58 @@ function applyLang(l){
 document.querySelectorAll(".lang button").forEach(b => {
   b.addEventListener("click", () => applyLang(b.dataset.l));
 });
+
+/* ===== PRODUCT SUITE 动态渲染(24 app, 数据源同 kinetapp/apps.html) ===== */
+const SUITE_APPS = [
+{id:"6809450051",name:"KinetAios",price:"$12.99",icon:"https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/a6/f8/ca/a6f8cab2-4ecf-f366-4190-0fe2eb378ecd/AppIcon.png/512x512bb.png",href:"https://apps.apple.com/us/app/kinetaios-all-in-one-ai-agent/id6809450051",tag:{en:"All-in-one native macOS AI agent workbench: code, research, writing, automation.","zh-Hans":"原生 macOS 一体化 AI Agent 工作台:代码、研究、写作、自动化。","zh-Hant":"原生 macOS 一体化 AI Agent 工作台:代码、研究、寫作、自动化。",ja:"All-in-one native macOS AI agent workbench: code, research, writing, automation."},hook:{en:"One native workbench for every AI job — code, research, writing, data.","zh-Hans":"一个原生工作台包揽所有 AI 活:代码、调研、写作、数据。","zh-Hant":"一个原生工作台包揽所有 AI 活:代码、调研、寫作、數據。",ja:"One native workbench for every AI job — code, research, writing, data."}},
+{id:"6780944289",name:"KinetTask",price:"$6.99",icon:"https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/9f/80/50/9f805042-08cc-19a6-66f2-82cd48a28013/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",href:"https://apps.apple.com/us/app/kinettask-private-ai-tasks/id6780944289",tag:{en:"100% on-device AI task manager. Your tasks never leave your phone.","zh-Hans":"100% 端侧 AI 任务管理,数据不出设备。","zh-Hant":"100% 端侧 AI 任務管理,數據不出设备。",ja:"100% on-device AI task manager. Your tasks never leave your phone."},hook:{en:"For to-do lists you\'d never trust to someone else\'s server.","zh-Hans":"适合不想把待办交给别人服务器的你。","zh-Hant":"适合不想把待办交给别人服务器的你。",ja:"For to-do lists you\'d never trust to someone else\'s server."}},
+{id:"6820196518",name:"M5Chat",price:"$9.99",icon:"https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/84/3c/a4/843ca420-b9d1-3124-05e2-d223edbe5edc/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",href:"https://apps.apple.com/us/app/m5chat-ai-chat/id6820196518",tag:{en:"AI chat that runs entirely on your device.","zh-Hans":"完全运行在本机的 AI 对话助手。","zh-Hant":"完全运行在本机的 AI 对话助手。",ja:"AI chat that runs entirely on your device."},hook:{en:"For questions you\'d rather not send to a cloud — chat, translate, summarize, offline.","zh-Hans":"不想上云的提问:翻译、总结、闲聊,断网也能用。","zh-Hant":"不想上云的提问:翻译、总结、闲聊,断网也能用。",ja:"For questions you\'d rather not send to a cloud — chat, translate, summarize, offline."}},
+{id:"6782778566",name:"KinetBrief",price:"$6.99",icon:"https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/20/60/77/2060773c-5782-1d87-6188-8deeaf46d870/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",href:"https://phinn.github.io/kinetbrief/",tag:{en:"Turns a day of meetings into one morning brief.","zh-Hans":"把一天的会议变成一份晨报。","zh-Hant":"把一天的會議变成一份晨报。",ja:"Turns a day of meetings into one morning brief."},hook:{en:"For anyone who sits in meetings all day and still loses track of decisions.","zh-Hans":"适合一天全在开会、转头就忘决策要点的人。","zh-Hant":"适合一天全在开会、转头就忘决策要点的人。",ja:"For anyone who sits in meetings all day and still loses track of decisions."}},
+{id:"6813593104",name:"KinetMinutes",price:"$9.99",icon:"https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/b3/18/4b/b3184b68-01f5-d3b2-4d98-110571d19fb5/AppIcon-0-0-85-220-0-5-0-2x.png/512x512bb.png",href:"https://apps.apple.com/us/app/kinetminutes-meeting-notes/id6813593104",tag:{en:"Meetings into structured notes — automatically, privately, on your Mac.","zh-Hans":"会议自动变结构化笔记 —— 私密,全在本机。","zh-Hant":"會議自动变结构化筆記 —— 私密,全在本机。",ja:"Meetings into structured notes — automatically, privately, on your Mac."},hook:{en:"Stop typing minutes. Record, and walk away with action items.","zh-Hans":"别再手写纪要:录音进场,带着行动项离场。","zh-Hant":"别再手写纪要:录音进场,带着行动项离场。",ja:"Stop typing minutes. Record, and walk away with action items."}},
+{id:"6815923723",name:"KinetMemory",price:"$9.99",icon:"https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/0b/69/e2/0b69e221-a94e-2641-381d-4ef1bb1a3d9a/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",href:"https://apps.apple.com/us/app/kinetmemory-flashcards/id6815923723",tag:{en:"Remember for good — FSRS reviews each card right before you forget.","zh-Hans":"学一遍就记住 —— FSRS 在你快忘时安排复习。","zh-Hant":"学一遍就记住 —— FSRS 在你快忘时安排复习。",ja:"Remember for good — FSRS reviews each card right before you forget."},hook:{en:"For med-school lists and vocabulary — review right before you forget.","zh-Hans":"背单词、记考点:在你快忘的那一刻复习。","zh-Hant":"背單詞、记考点:在你快忘的那一刻复习。",ja:"For med-school lists and vocabulary — review right before you forget."}},
+{id:"6797004663",name:"KinetStudy",price:"$6.99",icon:"https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/9e/48/e2/9e48e2a7-167d-5395-1b72-38fc2df9dbe5/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",href:"https://apps.apple.com/us/app/kinetstudy/id6797004663",tag:{en:"AI homework grading for parents — photo in, feedback out.","zh-Hans":"家长版 AI 作业批改 —— 拍照即出反馈。","zh-Hant":"家长版 AI 作业批改 —— 拍照即出反馈。",ja:"AI homework grading for parents — photo in, feedback out."},hook:{en:"Photo the homework, get feedback in seconds — for parents who check it nightly.","zh-Hans":"拍下作业秒出批改反馈——每晚检查作业的家长。","zh-Hant":"拍下作业秒出批改反馈——每晚检查作业的家长。",ja:"Photo the homework, get feedback in seconds — for parents who check it nightly."}},
+{id:"6820942179",name:"Clasp Focus",price:"$4.99",icon:"https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/57/0d/80/570d8074-0b01-4ba9-704f-3a2ea8c9db63/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",href:"https://apps.apple.com/us/app/clasp-focus-focus-timer/id6820942179",tag:{en:"A focus ritual built for folding iPhones.","zh-Hans":"为折叠屏 iPhone 打造的专注仪式。","zh-Hant":"为折叠屏 iPhone 打造的專注仪式。",ja:"A focus ritual built for folding iPhones."},hook:{en:"Fold to focus — a ritual for folding iPhone owners.","zh-Hans":"合上即专注——为折叠 iPhone 用户设计的仪式。","zh-Hant":"合上即專注——为折叠 iPhone 用户设计的仪式。",ja:"Fold to focus — a ritual for folding iPhone owners."}},
+{id:"6814033986",name:"KinetRain",price:"$6.99",icon:"https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/2f/d5/30/2fd53008-d664-616a-35ef-25b7a86f94d9/AppIcon.png/512x512bb.png",href:"https://apps.apple.com/us/app/kinetrain-rain-sounds/id6814033986",tag:{en:"Rain on demand. Synthesized live in your menu bar — never a loop.","zh-Hans":"即点即下的雨声 —— 实时合成,永不成循环。","zh-Hant":"即点即下的雨声 —— 實時合成,永不成循环。",ja:"Rain on demand. Synthesized live in your menu bar — never a loop."},hook:{en:"For deep-work sessions that need rain — synthesized live, never a loop.","zh-Hans":"深度工作要下雨:实时合成,永不循环。","zh-Hant":"深度工作要下雨:實時合成,永不循环。",ja:"For deep-work sessions that need rain — synthesized live, never a loop."}},
+{id:"6823855712",name:"DuoFolio",price:"$6.99",icon:"https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/e8/42/e9/e842e9c0-739e-2eae-dfbb-05f47ecceb4f/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",href:"https://apps.apple.com/us/app/duofolio/id6823855712",tag:{en:"Immersive two-page reader built for folding iPhones.","zh-Hans":"为折叠屏打造的沉浸式双页阅读器。","zh-Hant":"为折叠屏打造的沉浸式双页閱讀器。",ja:"Immersive two-page reader built for folding iPhones."},hook:{en:"Turn your folding iPhone into a real book — two pages, zero glare.","zh-Hans":"折叠屏秒变真书:双页阅读,零眩光。","zh-Hant":"折叠屏秒变真书:双页閱讀,零眩光。",ja:"Turn your folding iPhone into a real book — two pages, zero glare."}},
+{id:"6829156684",name:"DuoFrame Desk Calendar",price:"$6.99",icon:"https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/19/71/84/197184ae-0ad3-dfb2-b74e-a7783f752217/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",href:"https://apps.apple.com/us/app/duoframe-desk-calendar/id6829156684",tag:{en:"Your screen as a desk calendar that flips like real paper.","zh-Hans":"把屏幕变成像真纸一样翻页的台历。","zh-Hant":"把屏幕变成像真纸一样翻页的桌曆。",ja:"Your screen as a desk calendar that flips like real paper."},hook:{en:"Your screen becomes a paper desk calendar — for standing desks.","zh-Hans":"屏幕变成纸质台历——站式办公桌的仪式感。","zh-Hant":"屏幕变成纸质桌曆——站式办公桌的仪式感。",ja:"Your screen becomes a paper desk calendar — for standing desks."}},
+{id:"6829637244",name:"DuoComics",price:"$6.99",icon:"https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ff/96/c4/ff96c496-5aa5-3da2-ab8f-08ed03c33904/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",href:"https://apps.apple.com/us/app/duocomics/id6829637244",tag:{en:"Comic archives opened as two-page spreads on your folding iPhone.","zh-Hans":"漫画档在折叠屏上摊成双页跨页,像翻实体漫画。","zh-Hant":"漫畫档在折叠屏上摊成双页跨页,像翻实体漫畫。",ja:"Comic archives opened as two-page spreads on your folding iPhone."},hook:{en:"CBZ in, spread out — every double-page spread reads like print.","zh-Hans":"CBZ 导入即跨页:双页漫画还原纸感翻阅。","zh-Hant":"CBZ 导入即跨页:双页漫畫还原纸感翻阅。",ja:"CBZ in, spread out — every double-page spread reads like print."}},
+{id:"6834613522",name:"Pagebench",price:"$12.99",icon:"https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/bd/22/f5/bd22f588-3793-61ef-66e4-db709de05b02/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",href:"https://apps.apple.com/us/app/pagebench/id6834613522",tag:{en:"PDF on one screen, your notes on the other — pages stay in step.","zh-Hans":"一块屏读 PDF,另一块屏做笔记,页页同步。","zh-Hant":"一块屏读 PDF,另一块屏做筆記,页页同步。",ja:"PDF on one screen, your notes on the other — pages stay in step."},hook:{en:"Read on one pane, write on the other — every note binds to its page.","zh-Hans":"左边读右边写:每页笔记绑定文档页,翻到哪写到哪。","zh-Hant":"左边读右边写:每页筆記绑定文档页,翻到哪写到哪。",ja:"Read on one pane, write on the other — every note binds to its page."}},
+{id:"6817339084",name:"FurChart",price:"$4.99",icon:"https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/53/92/6e/53926e7f-9494-bb08-b393-9dcf8408067a/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",href:"https://apps.apple.com/us/app/furchart-pet-health-records/id6817339084",tag:{en:"Your pet\'s complete medical history, always at hand.","zh-Hans":"宠物完整健康档案,随手可查。","zh-Hant":"宠物完整健康档案,随手可查。",ja:"Your pet\'s complete medical history, always at hand."},hook:{en:"Every vet visit, vaccine and weight — in your hand at the next appointment.","zh-Hans":"每次就诊、疫苗、体重全在手边——下次看兽医直接翻。","zh-Hant":"每次就诊、疫苗、体重全在手边——下次看兽医直接翻。",ja:"Every vet visit, vaccine and weight — in your hand at the next appointment."}},
+{id:"6779978181",name:"KinetMorning",price:"$2.99",icon:"https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/5d/26/0e/5d260e8b-a4f6-171a-5404-35c8b13c535d/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",href:"https://apps.apple.com/us/app/kinetmorning/id6779978181",tag:{en:"One-tap daily check-in for aging parents. Peace of mind for the family.","zh-Hans":"独居老人的每日一键报平安。","zh-Hant":"獨居老人的每日一鍵報平安。",ja:"One-tap daily check-in for aging parents. Peace of mind for the family."},hook:{en:"One tap from mom says “I\'m up and fine” — peace of mind, long distance.","zh-Hans":"爸妈一键报平安——远方的你安心一整天。","zh-Hant":"爸妈一鍵報平安——远方的你安心一整天。",ja:"One tap from mom says “I\'m up and fine” — peace of mind, long distance."}},
+{id:"6807457522",name:"KinetElf",price:"$3.99",icon:"https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/a0/8f/3d/a08f3dad-bb4a-972e-c7ec-819b07391b2f/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",href:"https://phinn.github.io/KinetElf/",tag:{en:"An AI elf with personality and memory, living on your Dynamic Island.","zh-Hans":"住在灵动岛上的 AI 小精灵,有性格有记忆。","zh-Hant":"住在灵动岛上的 AI 小精灵,有性格有記憶。",ja:"An AI elf with personality and memory, living on your Dynamic Island."},hook:{en:"A tiny AI elf with memory, living in your Dynamic Island.","zh-Hans":"一只有记忆的 AI 小精灵,住在灵动岛里。","zh-Hant":"一只有記憶的 AI 小精灵,住在灵动岛里。",ja:"A tiny AI elf with memory, living in your Dynamic Island."}},
+{id:"6780600464",name:"KinetSoul",price:"$6.99",icon:"https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/5d/b7/96/5db7961e-8778-99af-abfc-30c1d119e410/AppIcon-0-0-1x_U007epad-0-8-0-85-220.png/512x512bb.jpg",href:"https://apps.apple.com/us/app/kinetsoul-ai-companion/id6780600464",tag:{en:"Talk it out at 2 a.m. — a warm companion that never leaves your phone.","zh-Hans":"深夜两点想找人说说话 —— 温柔的伙伴,永远不离开你的手机。","zh-Hant":"深夜两点想找人说说话 —— 温柔的伙伴,永远不离开你的手机。",ja:"Talk it out at 2 a.m. — a warm companion that never leaves your phone."},hook:{en:"For 2 a.m. thoughts — a warm listener that never leaves your phone.","zh-Hans":"给凌晨两点的念头——一个不离开手机的温暖倾听者。","zh-Hant":"给凌晨两点的念头——一个不离开手机的温暖倾听者。",ja:"For 2 a.m. thoughts — a warm listener that never leaves your phone."}},
+{id:"6773755689",name:"KinetFit",price:"$4.99",icon:"https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/28/d9/27/28d927e8-4347-7895-ba1d-6a252cb4bb8f/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",href:"https://phinn.github.io/kinet/index2.html",tag:{en:"Fast, private workout tracking with measurable progress.","zh-Hans":"快速、私密的健身记录,每次训练都有迹可循。","zh-Hant":"快速、私密的健身記錄,每次训练都有迹可循。",ja:"Fast, private workout tracking with measurable progress."},hook:{en:"Log workouts in three taps — progress you can measure, data you keep.","zh-Hans":"三步记完训练:进步看得见,数据归自己。","zh-Hant":"三步记完训练:进步看得见,數據归自己。",ja:"Log workouts in three taps — progress you can measure, data you keep."}},
+{id:"6808698046",name:"KinetFlashFind",price:"$6.99",icon:"https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/d8/ec/b3/d8ecb3d6-d558-fad8-44d4-068419562b58/AppIcon.png/512x512bb.png",href:"https://phinn.github.io/KinetFlashFind/",tag:{en:"Any file on your Mac, found in seconds — no more folder digging.","zh-Hans":"整块磁盘的文件,敲几个字母就到 —— 告别翻文件夹。","zh-Hant":"整块磁盘的檔案,敲几个字母就到 —— 告别翻檔案夹。",ja:"Any file on your Mac, found in seconds — no more folder digging."},hook:{en:"Find any file in seconds — for Macs with 40,000+ documents.","zh-Hans":"几秒找到任何文件——专治四万文档的 Mac。","zh-Hant":"几秒找到任何檔案——专治四万文档的 Mac。",ja:"Find any file in seconds — for Macs with 40,000+ documents."}},
+{id:"6813423397",name:"KinetMagicDisk",price:"$9.99",icon:"https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/cc/a1/90/cca19075-0a51-0d6a-037b-3f421ba80089/AppIcon-0-0-85-220-0-5-0-2x.png/512x512bb.png",href:"https://apps.apple.com/us/app/kinetmagicdisk-disk-usage/id6813423397",tag:{en:"See what fills your disk — interactive sunburst map, one-click cleanup.","zh-Hans":"看清磁盘都被什么占满 —— 交互式旭日图,一键清理。","zh-Hant":"看清磁盘都被什么占满 —— 交互式旭日图,一鍵清理。",ja:"See what fills your disk — interactive sunburst map, one-click cleanup."},hook:{en:"See exactly what fills your disk — for “Macintosh HD is full” moments.","zh-Hans":"看清磁盘到底装了什么——专治「Macintosh HD 已满」。","zh-Hant":"看清磁盘到底装了什么——专治「Macintosh HD 已满」。",ja:"See exactly what fills your disk — for “Macintosh HD is full” moments."}},
+{id:"6817377455",name:"DriftDesk",price:"$4.99",icon:"https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ab/2d/bd/ab2dbd9c-5b9c-488f-a119-84d6db01e6d3/AppIcon.png/512x512bb.png",href:"https://apps.apple.com/us/app/driftdesk-focus-ambience/id6817377455",tag:{en:"Turns your menu bar into a pocket of calm.","zh-Hans":"把菜单栏变成一方平静角落。","zh-Hant":"把菜单栏变成一方平静角落。",ja:"Turns your menu bar into a pocket of calm."},hook:{en:"A pocket of calm in your menu bar — for anxious desk days.","zh-Hans":"菜单栏里的一方安静——给焦躁的办公日。","zh-Hant":"菜单栏里的一方安静——给焦躁的办公日。",ja:"A pocket of calm in your menu bar — for anxious desk days."}},
+{id:"6831877963",name:"CubeLike",price:"$6.99",icon:"https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/12/d2/5d/12d25d31-c372-4dc0-698f-87b2fbc5c287/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",href:"https://apps.apple.com/us/app/cubelike-chain-burst/id6831877963",tag:{en:"Chain-reaction puzzle on a living cube — one move, sixty reactions.","zh-Hans":"立方体上的连锁反应解谜 —— 一步棋,六十重连锁。","zh-Hant":"立方体上的连锁反应解谜 —— 一步棋,六十重连锁。",ja:"Chain-reaction puzzle on a living cube — one move, sixty reactions."},hook:{en:"Sixty reactions from one move — for puzzle people who think in systems.","zh-Hans":"一步引发六十连锁——喜欢系统性思考的谜题玩家。","zh-Hant":"一步引发六十连锁——喜欢系统性思考的谜题玩家。",ja:"Sixty reactions from one move — for puzzle people who think in systems."}},
+{id:"6826942397",name:"Minebreaker",price:"$6.99",icon:"https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/fe/07/d1/fe07d123-e339-d1c5-5064-0e109a53bae5/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",href:"https://apps.apple.com/us/app/minebreaker-game/id6826942397",tag:{en:"Minesweeper, turned into treasure — every tile is a gamble.","zh-Hans":"扫雷变成挖宝 —— 每一格都是一次赌注。","zh-Hant":"扫雷变成挖宝 —— 每一格都是一次赌注。",ja:"Minesweeper, turned into treasure — every tile is a gamble."},hook:{en:"Minesweeper turned treasure hunt — every revealed tile is a bet.","zh-Hans":"扫雷变寻宝:每翻开一格都是一次下注。","zh-Hant":"扫雷变寻宝:每翻开一格都是一次下注。",ja:"Minesweeper turned treasure hunt — every revealed tile is a bet."}}
+];
+const SUITE_GRADS = ["#9B7EFF,#00B5E5","#00E5B5,#00B5E5","#FF9A5C,#FFD75F","#FF6B9B,#9B7EFF","#00B5E5,#FFD75F"];
+function curLang(){
+  return document.documentElement.lang || "zh-Hans";
+}
+function renderSuite(){
+  const grid = document.getElementById("suiteGrid");
+  if(!grid) return;
+  const l = curLang();
+  const key = (l === "zh-Hans" || l === "zh-Hant") ? l : (l === "ja" ? "ja" : "en");
+  grid.innerHTML = SUITE_APPS.map((a, i) => {
+    const g = SUITE_GRADS[i % SUITE_GRADS.length];
+    const tag = a.tag[key] || a.tag.en;
+    const hook = a.hook[key] || a.hook.en;
+    return '<a class="pcard" href="' + a.href + '" target="_blank" rel="noopener" style="--cardGrad:linear-gradient(135deg,' + g + ')">'
+      + '<div class="glow"></div>'
+      + '<div class="pico"><img src="' + a.icon + '" alt="' + a.name + ' app icon" loading="lazy" referrerpolicy="no-referrer"></div>'
+      + '<div class="price">' + a.price + '</div>'
+      + '<h4>' + a.name + '</h4>'
+      + '<div class="tag">' + tag + '</div>'
+      + '<p>' + hook + '</p>'
+      + '<span class="plink"><span data-i18n="ps_learn">了解产品</span> →</span>'
+      + '</a>';
+  }).join("");
+}
+renderSuite();
 
 const urlLang = new URLSearchParams(location.search).get("lang");
 const saved = (()=>{try{return localStorage.getItem("ka_lang")}catch(e){return null}})();
